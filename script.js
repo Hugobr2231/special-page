@@ -14,6 +14,7 @@ const varalTela = document.getElementById("varal-tela");
 const botaoVaral = document.getElementById("abrir-varal");
 const botaoFinalizar = document.getElementById("finalizar");
 const telaFinal = document.getElementById("final");
+const musica = document.getElementById("musica");
 
 const etapas = [
     {
@@ -58,12 +59,16 @@ function iniciarCarregamento() {
             setTimeout(proximaEtapa, 1000);
         } 
         
-        else {
-            setTimeout(() => {
-                carregamento.classList.add("escondido");
-                surpresa.classList.remove("escondido");
-            }, 300);
-        }
+else {
+    setTimeout(() => {
+        carregamento.classList.add("escondido");
+        surpresa.classList.remove("escondido");
+
+        musica.volume = 0.3;
+        musica.play();
+
+    }, 300);
+}
     }
     proximaEtapa();
 }
@@ -82,11 +87,6 @@ botaoPedido.addEventListener("click", () => {
 botaoContinuar.addEventListener("click", () => {
     mensagem.classList.add("escondido");
     amigos.classList.remove("escondido");
-});
-
-botaoVaral.addEventListener("click", () => {
-    botaoVaral.classList.add("escondido");
-    varal.classList.remove("escondido");
 });
 
 botaoVaral.addEventListener("click", () => {
