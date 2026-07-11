@@ -12,6 +12,9 @@ const amigos = document.getElementById("amigos");
 const botaoContinuar = document.getElementById("continuar-amigos");
 const varalTela = document.getElementById("varal-tela");
 const botaoVaral = document.getElementById("abrir-varal");
+const botaoFinalizar = document.getElementById("finalizar");
+const telaFinal = document.getElementById("final");
+
 const etapas = [
     {
         mensagem: "Preparando surpresa... 🎁",
@@ -89,4 +92,9 @@ botaoVaral.addEventListener("click", () => {
 botaoVaral.addEventListener("click", () => {
     amigos.classList.add("escondido");
     varalTela.classList.remove("escondido");
+});
+
+botaoFinalizar.addEventListener("click", () => {
+    varalTela.classList.add("escondido");
+    telaFinal.classList.remove("escondido");
 });
