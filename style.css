@@ -198,3 +198,108 @@ body.carregando {
 #amigos button {
     margin-top: 30px;
 }
+
+/* VARAL */
+
+#varal-tela h1 {
+    color: #ff69b4;
+}
+
+
+.varal {
+
+    margin-top: 50px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 50px;
+
+    position: relative;
+
+}
+
+
+.varal::before {
+
+    content: "";
+
+    width: 100%;
+
+    height: 5px;
+
+    background: #8b5a2b;
+
+    position: absolute;
+
+    top: 0;
+
+    border-radius: 10px;
+
+}
+
+
+.foto-varal {
+
+    margin-top: 40px;
+
+    width: 220px;
+
+    background: white;
+
+    padding: 15px;
+
+    padding-bottom: 25px;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+
+    transform: rotate(-3deg);
+
+    position: relative;
+
+}
+
+
+.foto-varal img {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+}
+
+
+.foto-varal h3 {
+
+    color: #d63384;
+
+    margin-top: 15px;
+
+}
+
+
+.foto-varal p {
+
+    color: #333;
+
+    margin-top: 10px;
+
+    font-size: 0.95rem;
+
+}
+
+
+.pregador {
+    width: 30px;
+    height: 50px;
+    background: #deb887;
+    position: absolute;
+    top: -35px;
+    left: calc(50% - 15px);
+    border-radius: 5px;
+}
