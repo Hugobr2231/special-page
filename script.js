@@ -16,28 +16,29 @@ const botaoFinalizar = document.getElementById("finalizar");
 const telaFinal = document.getElementById("final");
 const musica = document.getElementById("musica");
 const areaConfete = document.getElementById("confetes");
+const botaoReiniciar = document.getElementById("reiniciar");
 
 const etapas = [
-    {
-        mensagem: "Preparando surpresa... 🎁",
-        progresso: 20
-    },
-    {
-        mensagem: "Preparando bolo... 🎂",
-        progresso: 40
-    },
-    {
-        mensagem: "Enchendo balões... 🎈",
-        progresso: 60
-    },
-    {
-        mensagem: "Acendendo velinhas... 🕯️",
-        progresso: 80
-    },
-    {
-        mensagem: "Quase tudo pronto... ❤️",
-        progresso: 100
-    }
+{
+    mensagem:"Escrevendo uma cartinha... 💌",
+    progresso:20
+},
+{
+    mensagem:"Separando algumas lembranças... 📷",
+    progresso:40
+},
+{
+    mensagem:"Preparando uma surpresa... 🎂",
+    progresso:60
+},
+{
+    mensagem:"Só mais um pouquinho... ✨",
+    progresso:80
+},
+{
+    mensagem:"Prontinho. ❤️",
+    progresso:100
+}
 ];
 
 botao.addEventListener("click", () => {
@@ -88,6 +89,19 @@ function criarConfetes() {
     }
 }
 
+function criarEstrelas(){
+    const area = document.querySelector(".estrelas");
+    for(let i = 0; i < 40; i++){
+        const estrela = document.createElement("div");
+        estrela.classList.add("estrela");
+        estrela.style.left = Math.random()*100 + "%";
+        estrela.style.top = Math.random()*100 + "%";
+        estrela.style.animationDelay =
+        Math.random()*3 + "s";
+        area.appendChild(estrela);
+    }
+}
+
 botaoPedido.addEventListener("click", () => {
     chamas.forEach(chama => {
         chama.classList.add("apagada");
@@ -96,6 +110,7 @@ botaoPedido.addEventListener("click", () => {
     setTimeout(() => {
         surpresa.classList.add("escondido");
         mensagem.classList.remove("escondido");
+        criarEstrelas();
     }, 2000);
 });
 
@@ -112,4 +127,12 @@ botaoVaral.addEventListener("click", () => {
 botaoFinalizar.addEventListener("click", () => {
     varalTela.classList.add("escondido");
     telaFinal.classList.remove("escondido");
+    setTimeout(() => {
+        botaoReiniciar.classList.remove("escondido");
+        botaoReiniciar.classList.add("mostrar");
+    }, 3000);
+});
+
+botaoReiniciar.addEventListener("click", () => {
+    location.reload();
 });
