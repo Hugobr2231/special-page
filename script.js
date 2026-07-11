@@ -66,7 +66,7 @@ else {
         surpresa.classList.remove("escondido");
         criarConfetes();
 
-        musica.volume = 0.3;
+        musica.volume = 0.45;
         musica.play();
 
     }, 300);
