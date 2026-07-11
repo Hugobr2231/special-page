@@ -15,6 +15,7 @@ const botaoVaral = document.getElementById("abrir-varal");
 const botaoFinalizar = document.getElementById("finalizar");
 const telaFinal = document.getElementById("final");
 const musica = document.getElementById("musica");
+const areaConfete = document.getElementById("confetes");
 
 const etapas = [
     {
@@ -63,6 +64,7 @@ else {
     setTimeout(() => {
         carregamento.classList.add("escondido");
         surpresa.classList.remove("escondido");
+        criarConfetes();
 
         musica.volume = 0.3;
         musica.play();
@@ -71,6 +73,19 @@ else {
 }
     }
     proximaEtapa();
+}
+
+function criarConfetes() {
+    for(let i = 0; i < 80; i++) {
+        const confete = document.createElement("div");
+        confete.classList.add("confete");
+        confete.style.left = Math.random() * 100 + "%";
+        confete.style.animationDelay = Math.random() * 3 + "s";
+        confete.style.background = 
+        ["#e8a0b8", "#b76e79", "#f2b5c4", "#c49a6c"]
+        [Math.floor(Math.random() * 4)];
+        areaConfete.appendChild(confete);
+    }
 }
 
 botaoPedido.addEventListener("click", () => {
