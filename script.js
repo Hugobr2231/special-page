@@ -18,6 +18,15 @@ const musica = document.getElementById("musica");
 const areaConfete = document.getElementById("confetes");
 const botaoReiniciar = document.getElementById("reiniciar");
 
+const coracao = document.getElementById("coracao-secreto");
+const easter = document.getElementById("easter-egg");
+const barraEaster = document.getElementById("barra-easter");
+const textoEaster = document.getElementById("texto-easter");
+const porcentagemEaster = document.getElementById("porcentagem-easter");
+const fotosSecretas = document.getElementById("fotos-secretas");
+const botaoVoltarEaster = document.getElementById("voltar-easter");
+
+
 const etapas = [
 {
     mensagem:"Escrevendo uma cartinha... 💌",
@@ -135,4 +144,87 @@ botaoFinalizar.addEventListener("click", () => {
 
 botaoReiniciar.addEventListener("click", () => {
     location.reload();
+});
+
+coracao.addEventListener("click", () => {
+    telaFinal.classList.add("escondido");
+    easter.classList.remove("escondido");
+    iniciarEaster();
+});
+
+function iniciarEaster(){
+    let progresso = 0;
+    const intervalo = setInterval(()=>{
+        progresso++;
+        if(progresso == 67){
+            textoEaster.innerHTML = "67?!?!?!";
+            barraEaster.style.width = "67%";
+            porcentagemEaster.innerHTML = "67%";
+            clearInterval(intervalo);
+            setTimeout(()=>{
+             textoEaster.innerHTML = "Hmm... estranho...";
+            },900);
+
+            setTimeout(()=>{
+                textoEaster.innerHTML = "Acessando arquivos secretos...";
+                continuar();
+            },1700);
+        }
+        else{
+            barraEaster.style.width = progresso + "%";
+            porcentagemEaster.innerHTML = progresso + "%";
+        }
+    },30);
+}
+
+function continuar(){
+    let progresso = 67;
+    const intervalo = setInterval(()=>{
+        progresso++;
+        barraEaster.style.width = progresso + "%";
+        porcentagemEaster.innerHTML = progresso + "%";
+        if(progresso >= 100){
+            clearInterval(intervalo);
+            setTimeout(()=>{
+                mostrarFotosSecretas();
+            },600);
+        }
+    },25);
+}
+
+function mostrarFotosSecretas(){
+    easter.classList.add("escondido");
+    fotosSecretas.classList.remove("escondido");
+    revelarArquivos();
+}
+
+function revelarArquivos(){
+    const fotos = document.querySelectorAll(".galeria-secreta img");
+    const texto = document.getElementById("texto-arquivo");
+    let atual = 0;
+    const mensagens = [
+        "Arquivo #001 encontrado... 👀",
+        "Arquivo #002 encontrado... 🤨",
+        "Arquivo #003 encontrado... 🤨",
+        "Arquivo #004 encontrado... 💀",
+        "Arquivo #005 encontrado... SOCORRO KAKAKAKAKAKAK"
+    ];
+    function proxima(){
+        if(atual < fotos.length){
+            texto.innerHTML = mensagens[atual];
+            fotos[atual].classList.add("aparecer");
+            atual++;
+            setTimeout(proxima, 1500);
+        }
+        else{
+            texto.innerHTML =
+            "Todos os arquivos foram recuperados. ❤️";
+        }
+    }
+    proxima();
+}
+
+botaoVoltarEaster.addEventListener("click", () => {
+    easter.classList.add("escondido");
+    telaFinal.classList.remove("escondido");
 });

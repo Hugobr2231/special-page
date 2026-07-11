@@ -486,3 +486,127 @@ main {
         transform:rotate(-3deg);
     }
 }
+
+.dica-easter{
+    margin-top:35px;
+    color:#bfbfbf;
+    font-size:0.95rem;
+    opacity:.65;
+    font-style:italic;
+    transition:.3s;
+}
+
+.dica-easter:hover{
+    opacity:1;
+}
+
+.dica-easter span{
+    display:block;
+    margin-top:8px;
+    font-size:.75rem;
+    color:#888;
+}
+
+#coracao-secreto{
+    cursor:pointer;
+    transition:.25s;
+}
+
+#coracao-secreto:hover{
+    transform:scale(1.3);
+    filter:drop-shadow(0 0 8px #ff7eb6);
+}
+
+#barra-easter{
+    width:0%;
+    height:100%;
+    background:#e8a0b8;
+    transition:width .25s linear;
+    border-radius:20px;
+}
+
+#porcentagem-easter{
+    color:white;
+    font-size:1.5rem;
+    margin-top:20px;
+}
+
+#easter-egg{
+    color:white;
+}
+
+#texto-easter{
+    font-size:1.3rem;
+    color:#e8a0b8;
+}
+
+#fotos-secretas{
+    color:white;
+}
+
+
+.texto-secreto{
+    font-size:1.3rem;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.aviso-secreto{
+    color:#e8a0b8;
+    font-style:italic;
+    margin-bottom:40px;
+}
+
+.galeria-secreta{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+}
+
+.galeria-secreta img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    background:#fffaf5;
+    padding:12px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+    transform:rotate(-3deg);
+    transition:.3s;
+}
+
+.galeria-secreta img:hover{
+    transform:rotate(3deg) scale(1.08);
+}
+
+.final-secreto{
+    margin-top:50px;
+    color:#e8a0b8;
+    font-size:1.2rem;
+}
+
+.galeria-secreta img{
+    display:none;
+}
+
+.galeria-secreta img.aparecer{
+    display:block;
+    animation: aparecerFotoSecreta 1s ease;
+}
+
+#texto-arquivo{
+    color:#e8a0b8;
+    font-size:1.4rem;
+    margin:30px;
+}
+
+@keyframes aparecerFotoSecreta{
+    from{
+        opacity:0;
+        transform:scale(0.5) rotate(-10deg);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) rotate(-3deg);
+    }
+}
