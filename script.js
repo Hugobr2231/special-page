@@ -15,6 +15,7 @@ const botaoVaral = document.getElementById("abrir-varal");
 const botaoFinalizar = document.getElementById("finalizar");
 const telaFinal = document.getElementById("final");
 const musica = document.getElementById("musica");
+const musicaEaster = document.getElementById("musicaEaster");
 const areaConfete = document.getElementById("confetes");
 const botaoReiniciar = document.getElementById("reiniciar");
 
@@ -146,12 +147,6 @@ botaoReiniciar.addEventListener("click", () => {
     location.reload();
 });
 
-coracao.addEventListener("click", () => {
-    telaFinal.classList.add("escondido");
-    easter.classList.remove("escondido");
-    iniciarEaster();
-});
-
 function iniciarEaster(){
     let progresso = 0;
     const intervalo = setInterval(()=>{
@@ -192,12 +187,6 @@ function continuar(){
     },25);
 }
 
-function mostrarFotosSecretas(){
-    easter.classList.add("escondido");
-    fotosSecretas.classList.remove("escondido");
-    revelarArquivos();
-}
-
 function revelarArquivos(){
     const fotos = document.querySelectorAll(".galeria-secreta img");
     const texto = document.getElementById("texto-arquivo");
@@ -225,6 +214,52 @@ function revelarArquivos(){
 }
 
 botaoVoltarEaster.addEventListener("click", () => {
-    easter.classList.add("escondido");
+    fotosSecretas.classList.add("escondido");
     telaFinal.classList.remove("escondido");
+});
+
+let encontrouEaster = false;
+
+function mostrarFotosSecretas(){
+    encontrouEaster = true;
+    easter.classList.add("escondido");
+    fotosSecretas.classList.remove("escondido");
+    revelarArquivos();
+}
+
+function fadeOutMusica(){
+    const intervalo = setInterval(()=>{
+        if(musica.volume > 0.02){
+            musica.volume -= 0.02;
+        }else{
+            musica.pause();
+            musica.currentTime = 0;
+            musicaEaster.volume = 0.8;
+            musicaEaster.play();
+            clearInterval(intervalo);
+        }
+    },50);
+}
+
+botaoVoltarEaster.addEventListener("click", () => {
+    musicaEaster.pause();
+    musicaEaster.currentTime = 0;
+    musica.volume = 0.8;
+    musica.play();
+    fotosSecretas.classList.add("escondido");
+    telaFinal.classList.remove("escondido");
+    if(encontrouEaster){
+        document.querySelector(".assinatura").innerHTML =
+        "👀 Você realmente clicou no coração. Confesso que achei que ninguém fosse descobrir isso. Obrigado por explorar até o final. ❤️";
+    }
+});
+
+coracao.addEventListener("click", () => {
+    coracao.classList.add("ativado");
+    setTimeout(() => {
+        telaFinal.classList.add("escondido");
+        easter.classList.remove("escondido");
+        iniciarEaster();
+        fadeOutMusica();
+    },700);
 });

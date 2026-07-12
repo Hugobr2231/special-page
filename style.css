@@ -610,3 +610,33 @@ main {
         transform:scale(1) rotate(-3deg);
     }
 }
+
+#coracao-secreto{
+    display:inline-block;
+    cursor:pointer;
+    transition:.25s;
+}
+
+#coracao-secreto.ativado{
+    animation: descobrir .8s ease;
+}
+
+@keyframes descobrir{
+    0%{
+        transform:scale(1);
+    }
+    20%{
+        transform:scale(1.6);
+        filter:drop-shadow(0 0 15px #ff80bf);
+    }
+    40%{
+        transform:scale(.9);
+    }
+    60%{
+        transform:scale(1.25);
+    }
+    100%{
+        transform:scale(1);
+        filter:drop-shadow(0 0 10px #ff80bf);
+    }
+}
