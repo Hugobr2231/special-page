@@ -77,7 +77,7 @@ else {
         surpresa.classList.remove("escondido");
         criarConfetes();
 
-        musica.volume = 0.8;
+        musica.volume = 1;
         musica.play();
 
     }, 300);
@@ -192,12 +192,15 @@ function revelarArquivos(){
     const texto = document.getElementById("texto-arquivo");
     let atual = 0;
     const mensagens = [
-        "Arquivo #001 encontrado... 👀",
-        "Arquivo #002 encontrado... 🤨",
-        "Arquivo #003 encontrado... 🤨",
-        "Arquivo #004 encontrado... 💀",
-        "Arquivo #005 encontrado... SOCORRO KAKAKAKAKAKAK"
-    ];
+    "Arquivo #001 encontrado... 👀",
+    "Arquivo #002 encontrado... 🤨",
+    "Arquivo #003 encontrado... 🤨",
+    "Arquivo #004 encontrado... 💀",
+    "Arquivo #005 encontrado... SOCORRO KAKAKAKAKAKAK",
+    "Arquivo #006 encontrado... Isso ainda existe?! 😭",
+    "Arquivo #007 encontrado... Apagaram essa foto da galeria por um motivo.",
+    "Arquivo #008 encontrado... OK, chega. Esse arquivo nunca deveria ter sido recuperado. 💀"
+];
     function proxima(){
         if(atual < fotos.length){
             texto.innerHTML = mensagens[atual];
@@ -208,6 +211,20 @@ function revelarArquivos(){
         else{
             texto.innerHTML =
             "Todos os arquivos foram recuperados. ❤️";
+            setTimeout(()=>{
+                texto.innerHTML =
+                "⚠️ Encerrando acesso...";
+            }, 1500);
+            setTimeout(()=>{
+                texto.innerHTML =
+                "⚠️ Limpando rastros...";
+            }, 3000);setTimeout(()=>{
+                texto.innerHTML =
+                "❌ Falha ao apagar as memórias.";
+            }, 4500);setTimeout(()=>{
+                texto.innerHTML =
+                "❤️ Algumas coisas simplesmente merecem ser lembradas.";
+            }, 6500);
         }
     }
     proxima();
